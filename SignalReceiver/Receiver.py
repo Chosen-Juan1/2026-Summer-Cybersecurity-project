@@ -10,7 +10,7 @@ def handle_packet(packet):
     if(Raw in packet):
         packet.show()
         print(f"Information sent: {packet[Raw].load}\n")
-        print(f"Information sent: {packet[Raw].load}\n", flush=True)
+        print(f"Information sent with flush: {packet[Raw].load}\n", flush=True)
 
 
 

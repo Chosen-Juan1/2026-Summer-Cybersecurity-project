@@ -6,4 +6,5 @@ import time
 #     time.sleep(5)
 #     send(IP(dst="receiver") / UDP(dport=5000) / Raw(load="Hello receiver"))
 
-send(IP(dst="receiver") / UDP(dport=5000) / Raw(load="Hello receiver"))
+send(IP(dst="receiver") / UDP(sport=4000, dport=5000) / Raw(load=b"Hello receiver"))
+print("Packet sent")
