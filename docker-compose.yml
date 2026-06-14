@@ -1,0 +1,12 @@
+services:
+  receiver:
+    build: ./SignalReceiver
+    container_name: receiver
+    ports:
+      - "5000:5000"
+
+  sender:
+    build: ./SignalSender
+    container_name: sender
+    depends_on:
+      - receiver
