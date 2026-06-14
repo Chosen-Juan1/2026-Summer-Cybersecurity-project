@@ -1,12 +1,16 @@
 services:
   receiver:
-    build: ./SignalReceiver
+    build: 
+      context: .
+      dockerfile: SignalReceiver/Dockerfile
     container_name: receiver
     ports:
       - "5000:5000"
 
   sender:
-    build: ./SignalSender
+    build:
+      context: .
+      dockerfile: SignalSender/Dockerfile
     container_name: sender
     depends_on:
       - receiver

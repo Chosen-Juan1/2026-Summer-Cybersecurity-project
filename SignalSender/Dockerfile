@@ -1,9 +1,9 @@
 FROM python:3
 
-WORKDIR ../2026-Summer-Cybersecurity-project/SignalSender
+WORKDIR /app
 
-COPY . .
-
+COPY SignalSender/ .
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 EXPOSE 80

@@ -1,11 +1,12 @@
 FROM python:3
 
-WORKDIR ../2026-Summer-Cybersecurity-project/SignalReceiver
+WORKDIR /app
+COPY SignalReceiver/ .
 
-COPY . .
-
+RUN apt-get update && apt-get install -y libpcap-dev tcpdump
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-EXPOSE 79
+EXPOSE 5000
 
 CMD ["python", "Receiver.py"]

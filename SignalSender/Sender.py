@@ -1,11 +1,9 @@
-import os
-import signal
-import sys
+from scapy.all import IP, UDP, Raw, send
+import time
 
+# for x in range(0, 10):
+#     #imma attmept to send the packet 10 times every 5 seconds
+#     time.sleep(5)
+#     send(IP(dst="receiver") / UDP(dport=5000) / Raw(load="Hello receiver"))
 
-def handler(signum, frame):
-    print("Signal received")
-
-
-print("IM HERE \n\n\n\!!!!")
-
+send(IP(dst="receiver") / UDP(dport=5000) / Raw(load="Hello receiver"))
