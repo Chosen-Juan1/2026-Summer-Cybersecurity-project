@@ -14,3 +14,37 @@ services:
     container_name: sender
     depends_on:
       - receiver
+
+  suricata:
+    image: jasonish/suricata:latest
+    container_name: suricata
+    network_mode: "service:receiver"
+    depends_on:
+      - receiver
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_NICE
+    volumes:
+      - ./rules:/etc/suricata/rules
+      - ./suricata-logs:/var/log/suricata
+    command: >
+      -i eth0
+      -l /var/log/suricata
+      -S /etc/suricata/rules/local.rules
+      
+  evebox:
+    image: jasonish/evebox:latest
+    container_name: evebox
+    depends_on:
+      - suricata
+    ports:
+      - "5636:5636"
+    volumes:
+      - ./suricata-logs:/var/log/suricata:ro
+      - ./evebox-data:/var/lib/evebox
+    command: >
+      evebox server
+      --host 0.0.0.0
+      --port 5636
+      --sqlite /var/log/suricata/eve.json
