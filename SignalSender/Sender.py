@@ -15,3 +15,44 @@ badPacket = packet
 print("Modified packet sent")
 
 sr1(badPacket)
+
+
+####matlab simulink
+
+##create the account @upr.edu, then swittch to @uprm
+
+##RTlab 2022 ver
+
+#using udp
+
+
+#for power system comms
+#madbus (orgs the info so that its eaiser to read)
+
+#IEC 61-50
+
+#Goose communications
+###^^^^ they have cyber blocks but the liscense is expensive
+
+#dmp3
+
+
+#mains source of cyber threats, change what the system belives its current status
+
+
+##Exata cps (core simulator
+
+#cortellmenL a lot of sun but no bats to put it)
+
+
+#learn the commands sent
+
+#4-5 cyber scenarios
+
+##an attacker 
+
+# https://attack.mitre.org/
+
+#cve attack
+
+#fuzzing

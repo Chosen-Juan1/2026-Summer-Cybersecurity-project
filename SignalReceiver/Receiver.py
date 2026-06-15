@@ -19,3 +19,22 @@ sniff(
     store=False,
     filter="udp port 5000" #<- apperantly this needs a specific linux lib, added it to the docker file
 )
+
+
+#FIrst stage: server running with good interface on the server
+
+#Second stage
+
+
+#make sure it works on 2-3 scenarios
+
+##Dont worry about the PS simu
+
+
+##somethng that you send to the server, and the server computes smth and sends it back
+
+#ROS: RObotic operating system
+
+#INfo is not encrypted
+
+#mmoduler man in the middle of man

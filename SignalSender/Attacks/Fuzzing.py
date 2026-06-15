@@ -1,0 +1,2 @@
+def Fuzzing(packet):
+    return
