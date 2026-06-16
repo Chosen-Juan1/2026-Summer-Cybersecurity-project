@@ -1,0 +1,58 @@
+####matlab simulink
+
+##create the account @upr.edu, then swittch to @uprm
+
+##RTlab 2022 ver
+
+#using udp
+
+
+#for power system comms
+#madbus (orgs the info so that its eaiser to read)
+
+#IEC 61-50
+
+#Goose communications
+###^^^^ they have cyber blocks but the liscense is expensive
+
+#dmp3
+
+
+#mains source of cyber threats, change what the system belives its current status
+
+
+##Exata cps (core simulator
+
+#cortellmenL a lot of sun but no bats to put it)
+
+
+#learn the commands sent
+
+#4-5 cyber scenarios
+
+##an attacker 
+
+# https://attack.mitre.org/
+
+#cve attack
+
+#fuzzing
+
+
+#FIrst stage: server running with good interface on the server
+
+#Second stage
+
+
+#make sure it works on 2-3 scenarios
+
+##Dont worry about the Power Systems simulation
+
+
+##Format: You send somethng to the server, the server computes it and sends it back
+
+#ROS: Robotic operating system
+
+#Info is not encrypted
+
+#moduler man in the middle of man

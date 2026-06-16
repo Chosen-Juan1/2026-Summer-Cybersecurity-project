@@ -5,7 +5,7 @@ services:
       dockerfile: SignalReceiver/Dockerfile
     container_name: receiver
     ports:
-      - "5000:5000"
+      - "5000"
 
   sender:
     build:
