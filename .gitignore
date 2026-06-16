@@ -228,3 +228,26 @@ __marimo__/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+
+##for suricata and evebox
+
+# EveBox local data
+evebox-data/
+evebox_data/
+
+# Suricata logs
+suricata-logs/
+suricata_logs/
+
+# EveBox database/cert files, in case they appear outside the folder
+*.bookmark
+config.sqlite
+config.sqlite-shm
+config.sqlite-wal
+events.sqlite
+events.sqlite-shm
+events.sqlite-wal
+cert.pem
+key.pem
+eve.json
