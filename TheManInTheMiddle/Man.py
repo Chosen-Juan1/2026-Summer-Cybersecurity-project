@@ -1,16 +1,19 @@
-import os
-import signal
-import sys
-
-
-from scapy.all import IP, UDP, Raw, AsyncSniffer
+from scapy.all import Raw, AsyncSniffer, send, IP, UDP
 from time import sleep
 
 def handle_packet(packet):
     print("=== Packet Snooped ===", flush=True)
-    packet.show2()
-    # if(Raw in packet):
-    #     print(f"Information sent with flush: {packet[Raw].load}\n", flush=True)
+    #modify the packet's RAW contents 
+    if(Raw in packet and packet[Raw].load != b"I don't like either >:)"):
+        packet[Raw].load = b"I don't like either >:)"
+        packet = packet[IP].copy()
+        packet.show2()
+        del packet[IP].len
+        del packet[IP].chksum
+        del packet[UDP].len
+        del packet[UDP].chksum
+
+        send(packet)
 
 
 
