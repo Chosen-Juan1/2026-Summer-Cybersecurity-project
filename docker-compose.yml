@@ -20,9 +20,9 @@ services:
     network_mode: "service:receiver" #<- this is because the intercepter pkg needs to be in the same namespace as one of the other continers (for some reason)
     depends_on:
         - receiver
-    cap_add:
-      - NET_RAW
-      - NET_ADMIN
+    # cap_add:
+    #   - NET_RAW
+    #   - NET_ADMIN
     
 
   receiver:
