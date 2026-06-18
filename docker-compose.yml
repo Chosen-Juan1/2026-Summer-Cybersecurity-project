@@ -1,11 +1,5 @@
 services:
-  receiver:
-    build: 
-      context: .
-      dockerfile: SignalReceiver/Dockerfile
-    container_name: receiver
-    ports:
-      - "5000"
+
 
   sender:
     build:
@@ -14,6 +8,26 @@ services:
     container_name: sender
     depends_on:
       - receiver
+    ports:
+      - "4000"
+
+
+  man:
+    build:
+      context: .
+      dockerfile: TheManInTheMiddle/Dockerfile
+    container_name: TheManInTheMiddle
+    network_mode: "service:receiver" #<- this is because the intercepter pkg needs to be in the same namespace as one of the other continers (for some reason)
+    
+
+  receiver:
+    build: 
+      context: .
+      dockerfile: SignalReceiver/Dockerfile
+    container_name: receiver
+    ports:
+      - "5000"
+  
 
   suricata:
     image: jasonish/suricata:latest
