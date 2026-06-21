@@ -19,7 +19,8 @@ sniffer = AsyncSniffer(
     iface="eth0",
     prn=handle_packet,
     store=False,
-    filter="udp dst port 5000"
+    filter="udp dst port 5000",
+    count=10
 )
 
 sniffer.start()

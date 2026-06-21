@@ -10,6 +10,11 @@ services:
       - receiver
     ports:
       - "4000"
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 
   man:
@@ -20,6 +25,12 @@ services:
     network_mode: "service:receiver" #<- this is because the intercepter pkg needs to be in the same namespace as one of the other continers (for some reason)
     depends_on:
         - receiver
+
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "3"
     # cap_add:
     #   - NET_RAW
     #   - NET_ADMIN
@@ -32,6 +43,11 @@ services:
     container_name: receiver
     ports:
       - "5000"
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "3"
   
 
   suricata:

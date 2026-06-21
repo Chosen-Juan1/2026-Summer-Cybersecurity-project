@@ -1,5 +1,4 @@
 from scapy.all import IP, UDP, Raw, send, sr1, sniff, AsyncSniffer
-from Attacks.Fuzzing import Fuzzing
 from time import sleep
 def handle_packet(packet):
     print("=== Packet received ===", flush=True)
@@ -22,8 +21,9 @@ sniffer = AsyncSniffer(
     iface="eth0",
     prn=handle_packet,
     store=False,
-    filter="udp dst port 4000"
-)
+    filter="udp dst port 4000",
+    count=10
+) #Im setting up count limits cause leaving these fellas running causes docker to break, requiring a computer reset.
 
 sniffer.start()
 
