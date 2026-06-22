@@ -10,8 +10,10 @@ class ProtocolEncoder(json.JSONEncoder):
         if isinstance(obj, Packet):
             return {
                 'name': obj.name,
-                'fields_desc': [{'name': field.name, 'default': field.default, 'fmt': field.fmt} for field in obj.fields_desc if not isinstance(field, EnumField)],
-                'enum_fields_desc': [{'name': field.name, 'default': field.default, 'enum': field.i2s, 'fmt': field.fmt} for field in obj.fields_desc if isinstance(field, EnumField)]
+                'fields_desc': [{'name': field.name, 'default': field.default, 'fmt': field.fmt}
+                                for field in obj.fields_desc if not isinstance(field, EnumField)],
+                'enum_fields_desc': [{'name': field.name, 'default': field.default, 'enum': field.i2s, 'fmt': field.fmt}
+                                     for field in obj.fields_desc if isinstance(field, EnumField)]
             }
         return super().default(obj)
 
