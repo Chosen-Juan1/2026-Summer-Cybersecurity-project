@@ -3,7 +3,7 @@ from time import sleep
 def handle_packet(packet):
     print("=== Packet received ===", flush=True)
     packet.show2()
-    sleep(5)
+    sleep(7)
     print("=== Sending Response ===")
     sr1(IP(dst="receiver") / UDP(sport=4000, dport=packet[UDP].sport) / Raw(load=b"Yuh uh"))
 
@@ -22,7 +22,7 @@ sniffer = AsyncSniffer(
     prn=handle_packet,
     store=False,
     filter="udp dst port 4000",
-    count=10
+    count=50
 ) #Im setting up count limits cause leaving these fellas running causes docker to break, requiring a computer reset.
 
 sniffer.start()
@@ -30,7 +30,7 @@ sniffer.start()
 try:
     while True:
         print("Still sniffing...", flush=True)
-        sleep(5)
+        sleep(4)
 except KeyboardInterrupt:
     print("Stopping sniffer...", flush=True)
     sniffer.stop()

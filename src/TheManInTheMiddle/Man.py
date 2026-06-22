@@ -1,7 +1,8 @@
 from scapy.all import Raw, AsyncSniffer, send, IP, UDP, sniff
 import subprocess
 from RawOverwrite import overwrite_raw_contents
-from Flooding import flood_destination
+from FloodingDisruption import flood_destination
+from DeathByPacketFlood import deathByPacket
 #^^^note about this, apperantly docker files don't copy folders into containers, they dump it all into a local directory :|
 import time
 # import random
@@ -18,9 +19,9 @@ def listen_to_packets(packet):
 
 
 sniff( iface="eth0",
-           prn=flood_destination,
+           prn=deathByPacket,
              store=False,
-            filter="udp and port 5000", #this if we only want to attack the receiver,
+            filter="udp and dst port 5000", #this if we only want to attack the receiver,
             #  filter="udp and (port 5000 or port 4000)",
              count = 1)
 

@@ -22,9 +22,13 @@ services:
       context: .
       dockerfile: src/TheManInTheMiddle/Dockerfile
     container_name: TheManInTheMiddle
-    network_mode: "service:receiver" #<- this is because the intercepter pkg needs to be in the same namespace as one of the other continers (for some reason)
+    # network_mode: "service:receiver" #<- this is because the intercepter pkg needs to be in the same namespace as one of the other continers (for some reason)
+    network_mode: "service:sender" #<- we need to attach this to sender instead of receiver, because receiver is our main goal, so we operate from the sender's side
+
     depends_on:
-        - receiver
+        # - receiver
+
+        - sender
 
     logging:
       driver: "local"

@@ -5,7 +5,7 @@ from time import sleep
 
 def handle_packet(packet):
     print("=== Packet received ===", flush=True)
-    packet.show2()
+    # packet.show2()
     sleep(5)
     print("=== Sending Response ===")
     packet = (IP(dst="sender") / UDP(sport=5000, dport=packet[UDP].sport) / Raw(load=b"Nuh uh"))
@@ -20,7 +20,7 @@ sniffer = AsyncSniffer(
     prn=handle_packet,
     store=False,
     filter="udp dst port 5000",
-    count=10
+    count=50
 )
 
 sniffer.start()
