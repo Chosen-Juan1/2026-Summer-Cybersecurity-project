@@ -4,7 +4,7 @@ services:
   sender:
     build:
       context: .
-      dockerfile: SignalSender/Dockerfile
+      dockerfile: src/SignalSender/Dockerfile
     container_name: sender
     depends_on:
       - receiver
@@ -20,7 +20,7 @@ services:
   man:
     build:
       context: .
-      dockerfile: TheManInTheMiddle/Dockerfile
+      dockerfile: src/TheManInTheMiddle/Dockerfile
     container_name: TheManInTheMiddle
     network_mode: "service:receiver" #<- this is because the intercepter pkg needs to be in the same namespace as one of the other continers (for some reason)
     depends_on:
@@ -39,7 +39,7 @@ services:
   receiver:
     build: 
       context: .
-      dockerfile: SignalReceiver/Dockerfile
+      dockerfile: src/SignalReceiver/Dockerfile
     container_name: receiver
     ports:
       - "5000"

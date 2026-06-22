@@ -1,12 +1,12 @@
 FROM python:3
 
 WORKDIR /app
-COPY TheManInTheMiddle/ .
+COPY src/SignalReceiver/ .
 
 RUN apt-get update && apt-get install -y libpcap-dev tcpdump
 COPY requirements.txt .
-COPY Attacks .
 RUN pip install -r requirements.txt
 
-# CMD ["ls"]
-CMD ["python", "Man.py"]
+EXPOSE 5000
+
+CMD ["python", "Receiver.py"]
