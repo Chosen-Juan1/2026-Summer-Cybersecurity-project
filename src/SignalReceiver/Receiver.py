@@ -1,11 +1,14 @@
-import time
-
-from scapy.all import sniff, IP, UDP, Raw, AsyncSniffer, sr1
 from time import sleep
+from dotenv import load_dotenv
+from os import getenv
+from scapy.all import sniff, IP, UDP, Raw, AsyncSniffer, sr1
+
+load_dotenv()
+DEBUG = getenv("DEBUG", "0").lower() == "1"
 
 def handle_packet(packet):
     print("=== Packet received ===", flush=True)
-    # packet.show2()
+    if DEBUG: packet.show2()
     sleep(5)
     print("=== Sending Response ===")
     packet = (IP(dst="sender") / UDP(sport=5000, dport=packet[UDP].sport) / Raw(load=b"Nuh uh"))
