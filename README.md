@@ -8,3 +8,6 @@ This repo records the progress for our 2026 summer project. We are tasked with b
 
 ## Evebox url
 https://localhost:5636
+
+## Update logs
+https://docs.google.com/document/d/12GlJmLkW3BprU6k89KQcSxkkWkK6EqMhDeuSgcbzQEI/edit?usp=sharing
