@@ -1,4 +1,4 @@
 import sys
 sys.path.append("src")
-from TheManInTheMiddle.AttackProtocol import demo
-demo()
+import TheManInTheMiddle.JsonLayerDemo
+TheManInTheMiddle.JsonLayerDemo.demo_modify_packet()
