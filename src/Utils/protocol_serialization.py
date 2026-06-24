@@ -26,7 +26,7 @@ def as_protocol(dct):
             if 'I' in field['fmt']:
                 enum_dict = {int(k): v for k, v in field['enum'].items()}
             else:
-                enum_dict = {k: v for k, v in field['enum'].items()}
+                enum_dict = {k: v for k, v in field['enum'].itzzems()}
             fields_desc.append(EnumField(field['name'], field['default'], enum_dict, field['fmt']))
         return type(dct['name'], (Packet,), {"name": dct['name'], "fields_desc": fields_desc})
     return dct
