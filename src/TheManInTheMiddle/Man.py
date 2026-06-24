@@ -1,13 +1,11 @@
 from scapy.all import Raw, AsyncSniffer, send, IP, UDP, sniff
 import subprocess
-from ApplyAndSend import apply_and_send
-from RawOverwrite import overwrite_raw_contents
-from FloodingDisruption import flood_destination
-from DeathByPacketFlood import deathByPacket
-from FieldModification import modify_field
-#^^^note about this, apperantly docker files don't copy folders into containers, they dump it all into a local directory :|
+from TheManInTheMiddle.ApplyAndSend import apply_and_send
+from Attacks.RawOverwrite import overwrite_raw_contents
+from Attacks.FloodingDisruption import flood_destination
+from Attacks.DeathByPacketFlood import deathByPacket
+from Attacks.FieldModification import modify_field
 import time
-# import random
 from scapy.config import conf
 conf.debug_dissector = 2 #<- apperantly, this is used for longer debug msgs
 time.sleep(2) #<- need to give receiver some time to boot up
