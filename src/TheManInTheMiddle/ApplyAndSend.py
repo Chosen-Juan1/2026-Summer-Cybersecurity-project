@@ -6,12 +6,13 @@ from os import getenv
 load_dotenv()
 DEBUG = getenv("DEBUG", "0").lower() == "1"
 
-def apply_and_send(packet: Packet, modifier, recalc=True, drop_datalink_layer=True):
+def apply(packet: Packet, modifier, recalc=True, drop_datalink_layer=True) -> Packet:
     """
-    Applies a modification function to a packet and sends it.
+    Applies a modification function to a packet and returns the modified packet.
 
     :param packet: The original packet to be modified.
     :param modifier: A function that takes a packet as input and returns a modified packet.
+    :return: The modified packet.
     """
     if DEBUG:
         print("=== Original Packet ===", flush=True)
@@ -27,6 +28,15 @@ def apply_and_send(packet: Packet, modifier, recalc=True, drop_datalink_layer=Tr
                 del modified_packet[UDP].len
                 del modified_packet[UDP].chksum
     if DEBUG:
-        print("=== Sending Modified Packet ===", flush=True)
+        print("=== Modified Packet ===", flush=True)
         modified_packet.show2()
-    send(modified_packet)
+    return modified_packet
+
+def apply_and_send(packet: Packet, modifier, recalc=True, drop_datalink_layer=True):
+    """
+    Applies a modification function to a packet and sends it.
+
+    :param packet: The original packet to be modified.
+    :param modifier: A function that takes a packet as input and returns a modified packet.
+    """
+    send(apply(packet, modifier, recalc=recalc, drop_datalink_layer=drop_datalink_layer))

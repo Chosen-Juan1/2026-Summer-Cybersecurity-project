@@ -8,7 +8,7 @@ DEBUG = getenv("DEBUG", "0").lower() == "1"
 
 def handle_packet(packet):
     print("=== Packet received ===", flush=True)
-    if DEBUG: packet.show2()
+    packet.show2()
     sleep(5)
     print("=== Sending Response ===")
     packet = (IP(dst="sender") / UDP(sport=5000, dport=packet[UDP].sport) / Raw(load=b"Nuh uh"))

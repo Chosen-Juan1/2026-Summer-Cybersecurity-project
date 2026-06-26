@@ -2,3 +2,5 @@ scapy==2.7.0
 python-dotenv
 psycopg2
 pandas==3.0.3
+dotenv
+streamlit

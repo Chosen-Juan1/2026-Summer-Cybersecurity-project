@@ -10,6 +10,7 @@ services:
       - receiver
     ports:
       - "4000"
+      - "8501"
     logging:
       driver: "local"
       options:
@@ -26,8 +27,6 @@ services:
     network_mode: "service:sender" #<- we need to attach this to sender instead of receiver, because receiver is our main goal, so we operate from the sender's side
 
     depends_on:
-        # - receiver
-
         - sender
 
     logging:
