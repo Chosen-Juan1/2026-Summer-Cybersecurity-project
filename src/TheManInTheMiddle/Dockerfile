@@ -10,5 +10,6 @@ RUN pip install -r requirements.txt
 COPY --exclude=SignalReceiver --exclude=SignalSender src .
 COPY .env .
 
-# CMD ["ls"]
-CMD ["python", "-m", "TheManInTheMiddle.Man"]
+EXPOSE 8501
+# CMD ["python", "TheManInTheMiddle/TuesdayDemo_man.py"]
+CMD ["streamlit", "run", "TheManInTheMiddle/TuesdayDemo_app.py"]
