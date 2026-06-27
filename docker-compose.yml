@@ -38,6 +38,7 @@ services:
     # cap_add:
     #   - NET_RAW
     #   - NET_ADMIN
+
     
 
   receiver:
@@ -87,3 +88,53 @@ services:
       --host 0.0.0.0
       --port 5636
       --sqlite /var/log/suricata/eve.json
+  
+
+  client:
+    build:
+      context: .
+      dockerfile: src/Client/Dockerfile
+    container_name: client
+    # network_mode: "service:postgres"
+    # depends_on: 
+    #   - postgres
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
+  server:
+    build:
+      context: .
+      dockerfile: src/Server/Dockerfile
+    container_name: DBServer
+    network_mode: "service:postgres"
+    depends_on: 
+      - postgres
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
+
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: demo
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "8991:5432"
+    volumes:
+      - ../src/Database/pgdata:/var/lib/postgresql/data
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "3"
